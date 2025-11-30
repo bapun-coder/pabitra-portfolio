@@ -9,11 +9,11 @@
 
 <body>
 
-<!-- ============== PREMIUM NAVBAR ============== -->
+<!-- PREMIUM NAVBAR -->
 <div class="navbar">
-    <div class="logo name">Pabitra</div>
+    <div class="logo">Pabitra</div>
 
-    <div>
+    <div class="nav-links">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
@@ -25,77 +25,60 @@
     <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 </div>
 
-<!-- ============== HERO SECTION ============== -->
+<!-- HERO SECTION -->
 <section class="hero">
-
-    <div class="hero-left">
-        <img src="myphoto.jpg" class="hero-img">
-    </div>
+    <img src="myphoto.jpg" class="hero-img">
 
     <div class="hero-right">
         <h3 class="hello">HEY! I AM</h3>
         <h1 class="name">Pabitra Das Adhikari</h1>
-
-        <h2 class="role">
-            <span id="typing-text"></span>
-        </h2>
-
+        <h2><span id="typing-text"></span></h2>
         <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
     </div>
 </section>
 
-<!-- ============== HIDDEN SECTIONS ============== -->
-<section id="about" class="hidden-section"><h2>About</h2><p>I am a programmer...</p></section>
+<!-- SECTIONS -->
+<section id="about" class="hidden-section"><h2>About</h2></section>
 <section id="skills" class="hidden-section"><h2>Skills</h2></section>
 <section id="projects" class="hidden-section"><h2>Projects</h2></section>
 <section id="code1" class="hidden-section"><h2>C Program 1</h2></section>
 <section id="code2" class="hidden-section"><h2>C Program 2</h2></section>
-section id="code3" class="hidden-section"><h2>C Program 3</h2></section>
+<section id="code3" class="hidden-section"><h2>C Program 3</h2></section>
 
-<!-- ============== FLOATING SOCIAL BUTTONS ============== -->
+<!-- FLOATING SOCIAL BUTTONS -->
 <div class="social-buttons">
-    <a href="https://linkedin.com" target="_blank">in</a>
+    <a href="https://linkedin.com" target="_blank">💼</a>
     <a href="https://github.com" target="_blank">🐙</a>
     <a href="mailto:pabitrad162@gmail.com">📧</a>
 </div>
 
-<!-- ============== ANIMATED WAVE FOOTER ============== -->
+<!-- FOOTER -->
 <footer>
-    <p>© 2025 Pabitra Das Adhikari</p>
-    <p>📞 8338913479 | 📧 pabitrad162@gmail.com | 🔗 LinkedIn | 💻 GitHub</p>
+    © 2025 Pabitra Das Adhikari  
+    <p>📞 8338913479 | 📧 pabitrad162@gmail.com</p>
 </footer>
 
 <script>
-/* Typing Animation */
+/* TYPING EFFECT */
 const words = ["Student", "Programmer", "C Developer"];
-let i = 0, j = 0, isDeleting = false;
+let i=0, j=0, isDeleting=false;
 
-function typeEffect() {
+function typeEffect(){
     let w = words[i];
-    document.getElementById("typing-text").textContent = w.substring(0, j);
+    document.getElementById("typing-text").innerText = w.substring(0,j);
 
-    if (!isDeleting) j++;
+    if(!isDeleting) j++;
     else j--;
 
-    if (j === w.length) { isDeleting = true; setTimeout(typeEffect, 900); return; }
-    if (j === 0) { isDeleting = false; i = (i + 1) % words.length; }
+    if(j === w.length){ isDeleting = true; setTimeout(typeEffect,900); return; }
+    if(j === 0){ isDeleting=false; i=(i+1)%words.length; }
 
-    setTimeout(typeEffect, isDeleting ? 80 : 125);
+    setTimeout(typeEffect, isDeleting?70:120);
 }
 typeEffect();
 
-/* Smooth Scroll */
-document.querySelectorAll(".navbar a").forEach(link => {
-    link.addEventListener("click", function(e) {
-        e.preventDefault();
-        const sec = document.querySelector(this.getAttribute("href"));
-        sec.style.display = "block";
-        window.scrollTo({ top: sec.offsetTop - 60, behavior: "smooth" });
-    });
-});
-
-/* Dark Mode */
-function toggleTheme() {
+/* THEME TOGGLE */
+function toggleTheme(){
     document.body.classList.toggle("dark");
 }
 </script>
