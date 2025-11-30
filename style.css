@@ -228,4 +228,17 @@ body {
 
     .hero-right { padding-left: 0; }
 }
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    background: #000;
+    margin-top: 20px;
+}
+
+footer a {
+    color: #00aaff;
+    text-decoration: none;
+}
 
