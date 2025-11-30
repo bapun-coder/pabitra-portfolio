@@ -9,6 +9,20 @@
 
 <body>
 
+<!-- ================= TOP-RIGHT MENU BUTTON ================= -->
+<div class="menu-btn" onclick="toggleMenu()">⋮</div>
+
+<div id="dropdownMenu" class="dropdown">
+    <p class="menu-title">Navigation</p>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#code1">C Program 1</a>
+    <a href="#code2">C Program 2</a>
+    <a href="#code3">C Program 3</a>
+    <a href="resume.pdf" download>Download Resume</a>
+</div>
+
 <!-- ================= HERO SECTION (Split Screen) ================= -->
 <section class="hero">
 
@@ -21,28 +35,19 @@
     <div class="hero-right">
         <h3 class="hello">HEY! I AM</h3>
         <h1 class="name">Pabitra Das Adhikari</h1>
-        <h2 class="role">Student | Programmer | C Developer</h2>
+
+        <!-- TYPING TEXT -->
+        <h2 class="role">
+            <span id="typing-text"></span>
+        </h2>
 
         <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
     </div>
 
-    <!-- THREE DOT MENU -->
-    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
-
-    <div id="dropdownMenu" class="dropdown">
-        <p class="menu-title">Navigation</p>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#code1">C Program 1</a>
-        <a href="#code2">C Program 2</a>
-        <a href="#code3">C Program 3</a>
-        <a href="resume.pdf" download>Download Resume</a>
-    </div>
-
 </section>
 
-<!-- ================= HIDDEN SECTIONS (ONLY SHOW FROM MENU) ================= -->
+
+<!-- ================= HIDDEN SECTIONS (Only show when clicked) ================= -->
 
 <section id="about" class="hidden-section">
     <h2>About Me</h2>
@@ -70,35 +75,37 @@
 
 <section id="code1" class="hidden-section">
     <h2>C Program 1</h2>
-    <pre><code>
+<pre><code>
 #include <stdio.h>
 int main(){ printf("Program 1"); }
-    </code></pre>
+</code></pre>
 </section>
 
 <section id="code2" class="hidden-section">
     <h2>C Program 2</h2>
-    <pre><code>
+<pre><code>
 #include <stdio.h>
 int main(){ printf("Program 2"); }
-    </code></pre>
+</code></pre>
 </section>
 
 <section id="code3" class="hidden-section">
     <h2>C Program 3</h2>
-    <pre><code>
+<pre><code>
 #include <stdio.h>
 int main(){ printf("Program 3"); }
-    </code></pre>
+</code></pre>
 </section>
 
-<!-- JS -->
+<!-- ================= JAVASCRIPT ================= -->
 <script>
+/* ===== MENU TOGGLE ===== */
 function toggleMenu() {
     const menu = document.getElementById("dropdownMenu");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
 
+/* Close menu when clicking outside */
 document.addEventListener("click", function (event) {
     const menu = document.getElementById("dropdownMenu");
     const button = document.querySelector(".menu-btn");
@@ -107,6 +114,37 @@ document.addEventListener("click", function (event) {
         menu.style.display = "none";
     }
 });
+
+/* ===== TYPING ANIMATION ===== */
+const words = ["Student", "Programmer", "C Developer"];
+let i = 0, j = 0, isDeleting = false;
+
+function typeEffect() {
+    let currentWord = words[i];
+
+    if (!isDeleting) {
+        document.getElementById("typing-text").innerHTML = currentWord.substring(0, j + 1);
+        j++;
+
+        if (j === currentWord.length) {
+            isDeleting = true;
+            setTimeout(typeEffect, 1000);
+            return;
+        }
+    } else {
+        document.getElementById("typing-text").innerHTML = currentWord.substring(0, j - 1);
+        j--;
+
+        if (j === 0) {
+            isDeleting = false;
+            i = (i + 1) % words.length;
+        }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 80 : 120);
+}
+
+typeEffect();
 </script>
 
 </body>
