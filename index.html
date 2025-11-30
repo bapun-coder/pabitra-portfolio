@@ -1,384 +1,200 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Pabitra Das Adhikari — Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabitra Das Adhikari — Portfolio</title>
 
-<style>
-  /* ===== Reset & base ===== */
-  :root{
-    --glass-bg: rgba(255,255,255,0.08);
-    --glass-border: rgba(255,255,255,0.12);
-    --accent-blue: #00b0ff;
-    --text-dark: #07111a;
-    --text-light: #f6fbff;
-  }
-  html,body{height:100%;margin:0;padding:0;font-family: Inter, system-ui, Arial, sans-serif;-webkit-font-smoothing:antialiased;}
-  body{min-height:100vh;transition:background 400ms,color 300ms}
-  a{color:inherit;text-decoration:none}
-
-  /* ===== Animated page background (premium) ===== */
-  .bg-gradient {
-    position:fixed; inset:0; z-index:-100;
-    background: linear-gradient( -45deg, #c7d6ff 0%, #f0eaff 25%, #dff8ff 50%, #e8efff 100%);
-    background-size: 400% 400%;
-    animation: bgMove 14s ease infinite;
-    filter: saturate(1.05);
-  }
-  @keyframes bgMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-  /* ===== NAVBAR (RAINBOW GLASS) ===== */
-  .navbar {
-    position:fixed; left:0; right:0; top:0; height:72px;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 28px;
-    z-index:1200;
-    border-bottom:1px solid rgba(255,255,255,0.06);
-    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    backdrop-filter: blur(10px) saturate(120%);
-    box-shadow:0 6px 30px rgba(0,0,0,0.15);
-    overflow:visible;
-  }
-
-  /* Rainbow glow layer */
-  .navbar::after{
-    content:"";
-    position:absolute; inset:0; pointer-events:none; z-index:-1;
-    margin:6px;
-    border-radius:12px;
-    filter: blur(24px) brightness(1.05);
-    background: linear-gradient(90deg,
-      #ff4d4d, #ff9a4d, #ffc24d, #9bff4d, #4dfff0, #4db6ff, #8a4dff, #ff4db6);
-    background-size: 1600% 1600%;
-    animation: rainbowShift 8s linear infinite;
-    opacity:0.65;
-  }
-  @keyframes rainbowShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-  .logo { font-weight:900; font-size:28px; color:var(--text-dark); margin-right:12px; }
-  /* make logo gradient masked to text */
-  .logo.rainbow {
-    background: linear-gradient(90deg,#ff4d4d,#ff9a4d,#4db6ff,#8a4dff);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  }
-
-  .nav-links { display:flex; gap:18px; align-items:center; }
-  .nav-links a {
-    color:var(--text-dark); font-weight:700; padding:8px 10px; border-radius:8px; font-size:15px;
-    transition:all 220ms ease;
-  }
-  .nav-links a:hover {
-    background:rgba(255,255,255,0.06);
-    box-shadow:0 8px 24px rgba(0,180,255,0.06), inset 0 0 8px rgba(255,255,255,0.02);
-    color: white;
-  }
-
-  /* hamburger for mobile */
-  .hamburger { display:none; width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); align-items:center; justify-content:center; cursor:pointer }
-  .hamburger span{display:block;width:18px;height:2px;background:var(--text-dark); border-radius:2px; box-shadow:0 6px 0 var(--text-dark), 0 -6px 0 var(--text-dark)}
-  .mobile-menu { display:none; position:absolute; top:72px; right:20px; background:var(--glass-bg); border-radius:12px; padding:10px; box-shadow:0 12px 40px rgba(0,0,0,0.25); backdrop-filter: blur(8px) }
-
-  /* ===== HERO (centered modern layout) ===== */
-  .container { max-width:1180px; margin:0 auto; padding:110px 22px 60px; display:flex; gap:44px; align-items:center; justify-content:center; }
-  .hero-left { flex:0 0 420px; display:flex; justify-content:center; }
-  .hero-img {
-    width:360px; height:auto; border-radius:18px;
-    box-shadow: 0 20px 60px rgba(0, 170, 255, 0.06), 0 0 40px rgba(0,170,255,0.14) inset;
-    padding:6px; background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-    transition:transform 300ms ease;
-  }
-  .hero-img:hover { transform:translateY(-6px) scale(1.01); filter:contrast(1.02) }
-
-  .hero-right { flex:1; max-width:620px; }
-  .hello { color:#0078ff; letter-spacing:2px; font-weight:700; margin:6px 0; }
-  .name {
-    font-size:44px; margin:6px 0 8px; font-weight:900;
-    background: linear-gradient(90deg,#ff4d4d,#ff9a4d,#4db6ff,#8a4dff);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    background-size: 200% 200%;
-    animation: nameShift 6s linear infinite;
-    text-shadow: 0 6px 24px rgba(80,200,255,0.12);
-  }
-  @keyframes nameShift{ 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-  .role { font-size:20px; color:var(--text-dark); margin:8px 0 18px; font-weight:700; letter-spacing:1px; }
-  .resume-btn {
-    display:inline-block; padding:12px 22px; border-radius:10px; color:white; font-weight:800;
-    background:linear-gradient(90deg,#00b0ff,#00ffd1); box-shadow:0 10px 35px rgba(0,180,255,0.12);
-  }
-
-  /* ===== Hidden sections (D behavior) ===== */
-  .hidden-section { display:none; max-width:1100px; margin:30px auto; background: rgba(255,255,255,0.8); padding:22px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.06) }
-  .hidden-section h2{ margin-top:0 }
-
-  /* ===== Floating social icons (right-bottom) ===== */
-  .social-buttons { position:fixed; right:18px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:1100 }
-  .social-buttons a {
-    width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(180deg,#ffffff, #f2fbff); color:#0b63a7; font-size:20px; box-shadow:0 8px 30px rgba(0,170,255,0.12);
-    text-decoration:none;
-  }
-  .social-buttons a:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,170,255,0.18) }
-
-  /* ===== Animated wave footer ===== */
-  footer { text-align:center; padding:38px 12px; color:rgba(6,10,18,0.85); margin-top:40px; }
-  .footer-wave { position:relative; height:70px; overflow:hidden; margin-top:24px }
-  .footer-wave svg{ display:block; width:200%; transform:translateX(-25%); animation: waveMove 9s linear infinite }
-  @keyframes waveMove { 0%{transform:translateX(-25%)} 100%{transform:translateX(-75%)} }
-
-  /* ===== Theme: dark ===== */
-  body.dark { background: #071018; color:var(--text-light) }
-  body.dark .logo { color:var(--text-light) }
-  body.dark .nav-links a { color:rgba(255,255,255,0.9) }
-  body.dark .hero-right .role { color: #d8f6ff }
-  body.dark .hidden-section { background: rgba(3,8,14,0.65); color:var(--text-light) }
-
-  /* ===== Responsive ===== */
-  @media (max-width:980px){
-    .container{ padding:90px 18px; gap:20px }
-    .hero-left{ flex-basis:300px }
-    .hero-img{ width:300px }
-    .nav-links{ display:none }
-    .hamburger{ display:flex }
-    .mobile-menu{ display:none }
-  }
-  @media (max-width:640px){
-    .container{ flex-direction:column; padding:120px 14px 30px; align-items:center }
-    .hero-left{ order:1 }
-    .hero-right{ order:2; text-align:center }
-    .hero-img{ width:80% }
-    .logo{ font-size:22px }
-    .name{ font-size:32px }
-    .social-buttons{ right:12px; bottom:12px; }
-  }
-</style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- animated background -->
-  <div class="bg-gradient" aria-hidden="true"></div>
 
-  <!-- NAVBAR -->
-  <header class="navbar" role="banner">
-    <div style="display:flex;align-items:center;gap:12px;">
-      <div class="logo rainbow">Pabitra</div>
-    </div>
+    <!-- Animated background -->
+    <div class="bg-gradient"></div>
 
-    <nav class="nav-links" aria-label="Main navigation">
-      <a href="#about" data-target="#about">About</a>
-      <a href="#skills" data-target="#skills">Skills</a>
-      <a href="#projects" data-target="#projects">Projects</a>
-      <a href="#code1" data-target="#code1">C Program 1</a>
-      <a href="#code2" data-target="#code2">C Program 2</a>
-      <a href="#code3" data-target="#code3">C Program 3</a>
-    </nav>
-
-    <div style="display:flex;gap:12px;align-items:center;">
-      <button id="themeBtn" class="theme-toggle" title="Theme: Light / Dark / Auto">Theme</button>
-
-      <!-- hamburger for small screens -->
-      <button class="hamburger" id="hambBtn" aria-label="Open menu" title="Menu">
-        <span></span>
-      </button>
-    </div>
-
-    <!-- mobile menu -->
-    <div class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
-      <div style="display:flex;flex-direction:column">
-        <a href="#about" data-target="#about" style="padding:8px 10px">About</a>
-        <a href="#skills" data-target="#skills" style="padding:8px 10px">Skills</a>
-        <a href="#projects" data-target="#projects" style="padding:8px 10px">Projects</a>
-        <a href="#code1" data-target="#code1" style="padding:8px 10px">C Program 1</a>
-        <a href="#code2" data-target="#code2" style="padding:8px 10px">C Program 2</a>
-        <a href="#code3" data-target="#code3" style="padding:8px 10px">C Program 3</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN: HERO -->
-  <main>
-    <section class="container" aria-labelledby="heroHeading">
-      <div class="hero-left">
-        <img src="myphoto.jpg" alt="Pabitra" class="hero-img" />
-      </div>
-
-      <div class="hero-right">
-        <div class="hello">HEY! I AM</div>
-        <h1 class="name">Pabitra Das Adhikari</h1>
-        <div class="role" id="typing-text" aria-live="polite">Student • Programmer • C Developer</div>
-
-        <div style="margin-top:18px">
-          <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <div class="logo">Pabitra</div>
         </div>
-      </div>
+
+        <nav class="nav-links">
+            <a href="#about" data-target="#about">About</a>
+            <a href="#skills" data-target="#skills">Skills</a>
+            <a href="#projects" data-target="#projects">Projects</a>
+            <a href="#code1" data-target="#code1">C Program 1</a>
+            <a href="#code2" data-target="#code2">C Program 2</a>
+            <a href="#code3" data-target="#code3">C Program 3</a>
+        </nav>
+
+        <div style="display:flex;gap:12px;align-items:center;">
+            <button id="themeBtn" class="theme-toggle">Theme</button>
+
+            <!-- Mobile hamburger -->
+            <button class="hamburger" id="hambBtn">
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile dropdown menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#about" data-target="#about">About</a>
+            <a href="#skills" data-target="#skills">Skills</a>
+            <a href="#projects" data-target="#projects">Projects</a>
+            <a href="#code1" data-target="#code1">C Program 1</a>
+            <a href="#code2" data-target="#code2">C Program 2</a>
+            <a href="#code3" data-target="#code3">C Program 3</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="container">
+        <div class="hero-left">
+            <img src="myphoto.jpg" alt="Pabitra Photo" class="hero-img">
+        </div>
+
+        <div class="hero-right">
+            <div class="hello">HEY! I AM</div>
+            <h1 class="name">Pabitra Das Adhikari</h1>
+            <div class="role" id="typing-text">Student</div>
+
+            <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
+        </div>
     </section>
 
-    <!-- HIDDEN SECTIONS (will show on click) -->
-    <section id="about" class="hidden-section" aria-hidden="true">
-      <h2>About</h2>
-      <p>Hello! I am Pabitra — MCA student & C programmer. I build small tools, practice system programming and data structures, and create projects for learning and portfolio.</p>
+    <!-- HIDDEN SECTIONS -->
+    <section id="about" class="hidden-section"><h2>About</h2>
+        <p>I am Pabitra, MCA student and C programmer.</p>
     </section>
 
-    <section id="skills" class="hidden-section" aria-hidden="true">
-      <h2>Skills</h2>
-      <ul>
-        <li>C Language</li>
-        <li>HTML & CSS</li>
-        <li>MySQL / Oracle</li>
-        <li>MS Office</li>
-      </ul>
+    <section id="skills" class="hidden-section"><h2>Skills</h2>
+        <ul>
+            <li>C Language</li>
+            <li>HTML & CSS</li>
+            <li>MySQL / Oracle</li>
+            <li>MS Office</li>
+        </ul>
     </section>
 
-    <section id="projects" class="hidden-section" aria-hidden="true">
-      <h2>Projects</h2>
-      <p>Dynamic Memory Allocation tool, Salary Slip generator, File handling examples.</p>
+    <section id="projects" class="hidden-section"><h2>Projects</h2>
+        <p>Dynamic Memory Allocation, Salary Slip Generator, File Handling Tools</p>
     </section>
 
-    <section id="code1" class="hidden-section" aria-hidden="true">
-      <h2>C Program 1</h2>
-      <pre><code>#include &lt;stdio.h&gt;
-int main(){ printf("Program 1\n"); return 0; }</code></pre>
+    <section id="code1" class="hidden-section"><h2>C Program 1</h2>
+<pre><code>#include <stdio.h>
+int main(){ printf("Program 1"); }</code></pre>
     </section>
 
-    <section id="code2" class="hidden-section" aria-hidden="true">
-      <h2>C Program 2</h2>
-      <pre><code>#include &lt;stdio.h&gt;
-int main(){ printf("Program 2\n"); return 0; }</code></pre>
+    <section id="code2" class="hidden-section"><h2>C Program 2</h2>
+<pre><code>#include <stdio.h>
+int main(){ printf("Program 2"); }</code></pre>
     </section>
 
-    <section id="code3" class="hidden-section" aria-hidden="true">
-      <h2>C Program 3</h2>
-      <pre><code>#include &lt;stdio.h&gt;
-int main(){ printf("Program 3\n"); return 0; }</code></pre>
+    <section id="code3" class="hidden-section"><h2>C Program 3</h2>
+<pre><code>#include <stdio.h>
+int main(){ printf("Program 3"); }</code></pre>
     </section>
-  </main>
 
-  <!-- Floating social icons (modern) -->
-  <div class="social-buttons" aria-hidden="false">
-    <a href="https://linkedin.com/in/pabitra-das-adhikari-22067929b" target="_blank" title="LinkedIn">💼</a>
-    <a href="https://github.com/bapun-coder" target="_blank" title="GitHub">🐙</a>
-    <a href="mailto:pabitrad162@gmail.com" title="Email">✉️</a>
-  </div>
+    <!-- SOCIAL BUTTONS -->
+    <div class="social-buttons">
+        <a href="https://linkedin.com/in/pabitra-das-adhikari-22067929b" target="_blank">💼</a>
+        <a href="https://github.com/bapun-coder" target="_blank">🐙</a>
+        <a href="mailto:pabitrad162@gmail.com">✉️</a>
+    </div>
 
-  <!-- FOOTER with animated wave (SVG included inline) -->
-  <div class="footer-wave" aria-hidden="true">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="height:100%;width:100%;display:block">
-      <path d="M0,32 C150,88 350,4 600,32 C850,60 1050,20 1200,40 L1200 120 L0 120 Z" fill="rgba(255,255,255,0.18)"></path>
-    </svg>
-  </div>
+    <!-- FOOTER -->
+    <div class="footer-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,32 C150,88 350,4 600,32 C850,60 1050,20 1200,40 L1200 120 L0 120 Z"
+                  fill="rgba(255,255,255,0.18)">
+            </path>
+        </svg>
+    </div>
 
-  <footer role="contentinfo">
-    <div>© 2025 Pabitra Das Adhikari</div>
-    <div style="opacity:0.9;margin-top:6px">📞 8338913479 &nbsp; | &nbsp; pabitrad162@gmail.com</div>
-  </footer>
+    <footer>
+        © 2025 Pabitra Das Adhikari  
+        <p>📞 8338913479 | 📧 pabitrad162@gmail.com</p>
+    </footer>
 
+<!-- JAVASCRIPT -->
 <script>
-/* ===== Mobile Menu ===== */
+/* Mobile menu toggle */
 const hambBtn = document.getElementById('hambBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-hambBtn && hambBtn.addEventListener('click', (e)=>{
-  const visible = mobileMenu.style.display === 'block';
-  mobileMenu.style.display = visible ? 'none' : 'block';
+hambBtn.addEventListener('click', () => {
+    mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
 });
 
-/* ===== Show / Hide Sections (D behavior) =====
-   When a nav link is clicked show only that section and hide others.
-   No extra left-side list will appear. Smoothly scroll just enough to show it.
-*/
+/* Close mobile menu on outside click */
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !hambBtn.contains(e.target)) {
+        mobileMenu.style.display = 'none';
+    }
+});
+
+/* Hidden sections (D behaviour) */
 const navLinks = document.querySelectorAll('a[data-target]');
-const hidden = document.querySelectorAll('.hidden-section');
+const hiddenSections = document.querySelectorAll('.hidden-section');
 
-function hideAllSections(){
-  hidden.forEach(s=>{
-    s.style.display = 'none';
-    s.setAttribute('aria-hidden','true');
-  });
+function hideAll() {
+    hiddenSections.forEach(sec => sec.style.display = 'none');
 }
-hideAllSections();
+hideAll();
 
-navLinks.forEach(link=>{
-  link.addEventListener('click', function(e){
-    e.preventDefault();
-    const target = this.getAttribute('data-target');
-    if(!target) return;
-    hideAllSections();
-    const sec = document.querySelector(target);
-    if(!sec) return;
-    sec.style.display = 'block';
-    sec.setAttribute('aria-hidden','false');
-
-    // close mobile menu if open
-    if(mobileMenu) mobileMenu.style.display = 'none';
-
-    // scroll a little so user sees the opened section
-    const top = sec.getBoundingClientRect().top + window.scrollY - 90;
-    window.scrollTo({ top, behavior:'smooth' });
-  });
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        hideAll();
+        const sec = document.querySelector(this.dataset.target);
+        sec.style.display = 'block';
+        window.scrollTo({ top: sec.offsetTop - 80, behavior: 'smooth' });
+        mobileMenu.style.display = 'none';
+    });
 });
 
-/* ===== Typing effect for role text (keeps cycling) ===== */
-const roleEl = document.getElementById('typing-text');
+/* Typing effect */
 const words = ["Student","Programmer","C Developer"];
-let wi=0, ci=0, forward=true;
-function tick(){
-  let w = words[wi];
-  if(forward){
-    ci++;
-    if(ci > w.length){ forward=false; setTimeout(tick,900); return; }
-  } else {
-    ci--;
-    if(ci === 0){ forward=true; wi=(wi+1)%words.length; }
-  }
-  roleEl.textContent = w.substring(0,ci);
-  setTimeout(tick, forward?120:70);
-}
-tick();
+let i = 0, j = 0, del = false;
+const role = document.getElementById("typing-text");
 
-/* ===== Theme switch: cycles Light -> Dark -> Auto ===== */
-const themeBtn = document.getElementById('themeBtn');
-const saved = localStorage.getItem('site-theme') || 'auto';
+function type() {
+    const w = words[i];
+    role.innerText = w.substring(0, j);
+
+    if (!del) j++;
+    else j--;
+
+    if (j === w.length) { del = true; setTimeout(type, 900); return; }
+    if (j === 0) { del = false; i = (i + 1) % words.length; }
+
+    setTimeout(type, del ? 70 : 120);
+}
+type();
+
+/* Theme switcher */
+const themeBtn = document.getElementById("themeBtn");
+const saved = localStorage.getItem("theme") || "auto";
 applyTheme(saved);
 
-themeBtn.addEventListener('click', ()=>{
-  const cur = localStorage.getItem('site-theme') || 'auto';
-  const next = cur === 'auto' ? 'dark' : cur === 'dark' ? 'light' : 'auto';
-  applyTheme(next);
-  localStorage.setItem('site-theme', next);
+themeBtn.addEventListener("click", () => {
+    const current = localStorage.getItem("theme") || "auto";
+    const next = current === "auto" ? "dark" : current === "dark" ? "light" : "auto";
+    localStorage.setItem("theme", next);
+    applyTheme(next);
 });
 
-function applyTheme(mode){
-  if(mode === 'dark'){
-    document.body.classList.add('dark');
-    document.documentElement.style.setProperty('--text-dark','#dbeeff');
-  } else if(mode === 'light'){
-    document.body.classList.remove('dark');
-    document.documentElement.style.setProperty('--text-dark','#07111a');
-  } else {
-    // auto: follow prefers-color-scheme
-    const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if(prefers) document.body.classList.add('dark'); else document.body.classList.remove('dark');
-  }
-  // update button label
-  themeBtn.textContent = mode === 'auto' ? 'Theme: Auto' : (mode === 'dark' ? 'Theme: Dark' : 'Theme: Light');
+function applyTheme(mode) {
+    if (mode === "dark") document.body.classList.add("dark");
+    else if (mode === "light") document.body.classList.remove("dark");
+    else { 
+        const prefers = matchMedia('(prefers-color-scheme: dark)').matches;
+        prefers ? document.body.classList.add("dark") : document.body.classList.remove("dark");
+    }
+    themeBtn.innerText = "Theme: " + mode;
 }
-
-/* initialize theme button label with saved */
-themeBtn.textContent = (localStorage.getItem('site-theme') || 'auto') === 'auto' ? 'Theme: Auto' : (localStorage.getItem('site-theme') === 'dark' ? 'Theme: Dark' : 'Theme: Light');
-
-/* ===== Ensure mobile menu hides when clicking outside ===== */
-document.addEventListener('click', (e)=>{
-  if(!mobileMenu) return;
-  if(!mobileMenu.contains(e.target) && !hambBtn.contains(e.target)){
-    mobileMenu.style.display = 'none';
-  }
-});
-
-/* ===== Accessibility: keyboard close mobile menu with ESC ===== */
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape'){
-    mobileMenu && (mobileMenu.style.display='none');
-  }
-});
 </script>
+
 </body>
 </html>
