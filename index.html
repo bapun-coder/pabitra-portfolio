@@ -9,34 +9,19 @@
 
 <body>
 
-<!-- ================= TOP-RIGHT MENU BUTTON ================= -->
-<div class="menu-btn" onclick="toggleMenu()">⋮</div>
-
-<div id="dropdownMenu" class="dropdown">
-    <p class="menu-title">Navigation</p>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#code1">C Program 1</a>
-    <a href="#code2">C Program 2</a>
-    <a href="#code3">C Program 3</a>
-    <a href="resume.pdf" download>Download Resume</a>
-</div>
-
-<!-- ================= HERO SECTION (Split Screen) ================= -->
+<!-- ================= HERO SECTION ================= -->
 <section class="hero">
 
-    <!-- LEFT SIDE PHOTO -->
+    <!-- LEFT SIDE -->
     <div class="hero-left">
         <img src="myphoto.jpg" alt="Pabitra Photo" class="hero-img">
     </div>
 
-    <!-- RIGHT SIDE TEXT -->
+    <!-- RIGHT SIDE -->
     <div class="hero-right">
         <h3 class="hello">HEY! I AM</h3>
         <h1 class="name">Pabitra Das Adhikari</h1>
 
-        <!-- TYPING TEXT -->
         <h2 class="role">
             <span id="typing-text"></span>
         </h2>
@@ -44,10 +29,24 @@
         <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
     </div>
 
+    <!-- THREE DOT MENU -->
+    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+
+    <!-- DROPDOWN MENU -->
+    <div id="dropdownMenu" class="dropdown">
+        <p class="menu-title">Navigation</p>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#code1">C Program 1</a>
+        <a href="#code2">C Program 2</a>
+        <a href="#code3">C Program 3</a>
+        <a href="resume.pdf" download>Download Resume</a>
+    </div>
+
 </section>
 
-
-<!-- ================= HIDDEN SECTIONS (Only show when clicked) ================= -->
+<!-- ================= HIDDEN SECTIONS ================= -->
 
 <section id="about" class="hidden-section">
     <h2>About Me</h2>
@@ -75,55 +74,50 @@
 
 <section id="code1" class="hidden-section">
     <h2>C Program 1</h2>
-<pre><code>
-#include <stdio.h>
-int main(){ printf("Program 1"); }
-</code></pre>
+    <pre><code>#include <stdio.h>
+int main(){ printf("Program 1"); }</code></pre>
 </section>
 
 <section id="code2" class="hidden-section">
     <h2>C Program 2</h2>
-<pre><code>
-#include <stdio.h>
-int main(){ printf("Program 2"); }
-</code></pre>
+    <pre><code>#include <stdio.h>
+int main(){ printf("Program 2"); }</code></pre>
 </section>
 
 <section id="code3" class="hidden-section">
     <h2>C Program 3</h2>
-<pre><code>
-#include <stdio.h>
-int main(){ printf("Program 3"); }
-</code></pre>
+    <pre><code>#include <stdio.h>
+int main(){ printf("Program 3"); }</code></pre>
 </section>
 
 <!-- ================= JAVASCRIPT ================= -->
 <script>
-/* ===== MENU TOGGLE ===== */
+// Dropdown toggle
 function toggleMenu() {
     const menu = document.getElementById("dropdownMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-/* Close menu when clicking outside */
-document.addEventListener("click", function (event) {
+// Close menu when clicking outside
+document.addEventListener("click", function(event) {
     const menu = document.getElementById("dropdownMenu");
     const button = document.querySelector(".menu-btn");
-
     if (!button.contains(event.target) && !menu.contains(event.target)) {
         menu.style.display = "none";
     }
 });
 
-/* ===== TYPING ANIMATION ===== */
+/* ================= TYPING EFFECT ================= */
 const words = ["Student", "Programmer", "C Developer"];
-let i = 0, j = 0, isDeleting = false;
+let i = 0, j = 0;
+let isDeleting = false;
 
 function typeEffect() {
     let currentWord = words[i];
 
     if (!isDeleting) {
-        document.getElementById("typing-text").innerHTML = currentWord.substring(0, j + 1);
+        document.getElementById("typing-text").innerHTML =
+            currentWord.substring(0, j + 1);
         j++;
 
         if (j === currentWord.length) {
@@ -131,8 +125,10 @@ function typeEffect() {
             setTimeout(typeEffect, 1000);
             return;
         }
-    } else {
-        document.getElementById("typing-text").innerHTML = currentWord.substring(0, j - 1);
+    } 
+    else {
+        document.getElementById("typing-text").innerHTML =
+            currentWord.substring(0, j - 1);
         j--;
 
         if (j === 0) {
@@ -140,10 +136,8 @@ function typeEffect() {
             i = (i + 1) % words.length;
         }
     }
-
-    setTimeout(typeEffect, isDeleting ? 80 : 120);
+    setTimeout(typeEffect, isDeleting ? 80 : 130);
 }
-
 typeEffect();
 </script>
 
