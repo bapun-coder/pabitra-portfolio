@@ -232,7 +232,7 @@ body {
 footer {
     text-align: center;
     padding: 20px;
-    color: transparent;
+    color: white;
     background: #000;
     margin-top: 20px;
 }
@@ -241,5 +241,6 @@ footer a {
     color: #00aaff;
     text-decoration: none;
 }
+
 
 
