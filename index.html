@@ -9,7 +9,7 @@
 
 <body>
 
-<!-- PREMIUM NAVBAR -->
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">Pabitra</div>
 
@@ -17,35 +17,52 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#code1">C Code 1</a>
-        <a href="#code2">C Code 2</a>
-        <a href="#code3">C Code 3</a>
+        <a href="#code1">C Program 1</a>
+        <a href="#code2">C Program 2</a>
+        <a href="#code3">C Program 3</a>
     </div>
-
-    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 </div>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
     <img src="myphoto.jpg" class="hero-img">
 
     <div class="hero-right">
-        <h3 class="hello">HEY! I AM</h3>
+        <h3>HEY! I AM</h3>
         <h1 class="name">Pabitra Das Adhikari</h1>
         <h2><span id="typing-text"></span></h2>
         <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
     </div>
 </section>
 
-<!-- SECTIONS -->
-<section id="about" class="hidden-section"><h2>About</h2></section>
-<section id="skills" class="hidden-section"><h2>Skills</h2></section>
-<section id="projects" class="hidden-section"><h2>Projects</h2></section>
-<section id="code1" class="hidden-section"><h2>C Program 1</h2></section>
-<section id="code2" class="hidden-section"><h2>C Program 2</h2></section>
-<section id="code3" class="hidden-section"><h2>C Program 3</h2></section>
+<!-- HIDDEN SECTIONS -->
+<section id="about" class="hidden-section">
+    <h2>About</h2>
+    <p>I am a programmer...</p>
+</section>
 
-<!-- FLOATING SOCIAL BUTTONS -->
+<section id="skills" class="hidden-section">
+    <h2>Skills</h2>
+    <ul><li>C Language</li></ul>
+</section>
+
+<section id="projects" class="hidden-section">
+    <h2>Projects</h2>
+</section>
+
+<section id="code1" class="hidden-section">
+    <h2>C Program 1</h2>
+</section>
+
+<section id="code2" class="hidden-section">
+    <h2>C Program 2</h2>
+</section>
+
+<section id="code3" class="hidden-section">
+    <h2>C Program 3</h2>
+</section>
+
+<!-- FLOATING BUTTONS -->
 <div class="social-buttons">
     <a href="https://linkedin.com" target="_blank">💼</a>
     <a href="https://github.com" target="_blank">🐙</a>
@@ -59,28 +76,33 @@
 </footer>
 
 <script>
-/* TYPING EFFECT */
+// TYPING EFFECT
 const words = ["Student", "Programmer", "C Developer"];
-let i=0, j=0, isDeleting=false;
+let i=0, j=0, del=false;
 
-function typeEffect(){
+function type() {
     let w = words[i];
     document.getElementById("typing-text").innerText = w.substring(0,j);
 
-    if(!isDeleting) j++;
-    else j--;
+    if (!del) j++; else j--;
 
-    if(j === w.length){ isDeleting = true; setTimeout(typeEffect,900); return; }
-    if(j === 0){ isDeleting=false; i=(i+1)%words.length; }
+    if (j === w.length) { del = true; setTimeout(type, 800); return; }
+    if (j === 0) { del = false; i = (i+1)%words.length; }
 
-    setTimeout(typeEffect, isDeleting?70:120);
+    setTimeout(type, del ? 70 : 120);
 }
-typeEffect();
+type();
 
-/* THEME TOGGLE */
-function toggleTheme(){
-    document.body.classList.toggle("dark");
-}
+// NAVBAR LINK CLICK FIX
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", function(e){
+        e.preventDefault();
+        const sec = document.querySelector(this.getAttribute("href"));
+        document.querySelectorAll(".hidden-section").forEach(s => s.style.display="none");
+        sec.style.display = "block";
+        window.scrollTo({ top: sec.offsetTop - 80, behavior: "smooth" });
+    });
+});
 </script>
 
 </body>
