@@ -87,6 +87,7 @@ body {
     font-weight: 900;
     background: linear-gradient(90deg,#0078ff,#00eaff,#005cff);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     animation: glowText 3s infinite alternate;
 }
@@ -227,3 +228,4 @@ body {
 
     .hero-right { padding-left: 0; }
 }
+
