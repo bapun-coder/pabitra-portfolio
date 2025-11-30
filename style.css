@@ -233,7 +233,7 @@ footer {
     text-align: center;
     padding: 20px;
     color: white;
-    background: #000;
+    background: transparent;
     margin-top: 20px;
 }
 
@@ -241,6 +241,7 @@ footer a {
     color: #00aaff;
     text-decoration: none;
 }
+
 
 
 
