@@ -3,197 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pabitra Das Adhikari — Portfolio</title>
-
-    <!-- External CSS -->
+    <title>Pabitra Das Adhikari</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- Animated background -->
-    <div class="bg-gradient"></div>
+<div class="bg-gradient"></div>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div style="display:flex;align-items:center;gap:12px;">
-            <div class="logo">Pabitra</div>
-        </div>
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">Pabitra</div>
 
-        <nav class="nav-links">
-            <a href="#about" data-target="#about">About</a>
-            <a href="#skills" data-target="#skills">Skills</a>
-            <a href="#projects" data-target="#projects">Projects</a>
-            <a href="#code1" data-target="#code1">C Program 1</a>
-            <a href="#code2" data-target="#code2">C Program 2</a>
-            <a href="#code3" data-target="#code3">C Program 3</a>
-        </nav>
+    <nav class="nav-links">
+        <a href="#" data-target="#about">About</a>
+        <a href="#" data-target="#skills">Skills</a>
+        <a href="#" data-target="#projects">Projects</a>
+        <a href="#" data-target="#code1">C Program 1</a>
+        <a href="#" data-target="#code2">C Program 2</a>
+        <a href="#" data-target="#code3">C Program 3</a>
+    </nav>
 
-        <div style="display:flex;gap:12px;align-items:center;">
-            <button id="themeBtn" class="theme-toggle">Theme</button>
+    <button class="hamburger" id="hamb"><span></span></button>
+</header>
 
-            <!-- Mobile hamburger -->
-            <button class="hamburger" id="hambBtn">
-                <span></span>
-            </button>
-        </div>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobMenu">
+    <a href="#" data-target="#about">About</a>
+    <a href="#" data-target="#skills">Skills</a>
+    <a href="#" data-target="#projects">Projects</a>
+    <a href="#" data-target="#code1">C Program 1</a>
+    <a href="#" data-target="#code2">C Program 2</a>
+    <a href="#" data-target="#code3">C Program 3</a>
+</div>
 
-        <!-- Mobile dropdown menu -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#about" data-target="#about">About</a>
-            <a href="#skills" data-target="#skills">Skills</a>
-            <a href="#projects" data-target="#projects">Projects</a>
-            <a href="#code1" data-target="#code1">C Program 1</a>
-            <a href="#code2" data-target="#code2">C Program 2</a>
-            <a href="#code3" data-target="#code3">C Program 3</a>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="container">
-        <div class="hero-left">
-            <img src="myphoto.jpg" alt="Pabitra Photo" class="hero-img">
-        </div>
-
-        <div class="hero-right">
-            <div class="hello">HEY! I AM</div>
-            <h1 class="name">Pabitra Das Adhikari</h1>
-            <div class="role" id="typing-text">Student</div>
-
-            <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
-        </div>
-    </section>
-
-    <!-- HIDDEN SECTIONS -->
-    <section id="about" class="hidden-section"><h2>About</h2>
-        <p>I am Pabitra, MCA student and C programmer.</p>
-    </section>
-
-    <section id="skills" class="hidden-section"><h2>Skills</h2>
-        <ul>
-            <li>C Language</li>
-            <li>HTML & CSS</li>
-            <li>MySQL / Oracle</li>
-            <li>MS Office</li>
-        </ul>
-    </section>
-
-    <section id="projects" class="hidden-section"><h2>Projects</h2>
-        <p>Dynamic Memory Allocation, Salary Slip Generator, File Handling Tools</p>
-    </section>
-
-    <section id="code1" class="hidden-section"><h2>C Program 1</h2>
-<pre><code>#include <stdio.h>
-int main(){ printf("Program 1"); }</code></pre>
-    </section>
-
-    <section id="code2" class="hidden-section"><h2>C Program 2</h2>
-<pre><code>#include <stdio.h>
-int main(){ printf("Program 2"); }</code></pre>
-    </section>
-
-    <section id="code3" class="hidden-section"><h2>C Program 3</h2>
-<pre><code>#include <stdio.h>
-int main(){ printf("Program 3"); }</code></pre>
-    </section>
-
-    <!-- SOCIAL BUTTONS -->
-    <div class="social-buttons">
-        <a href="https://linkedin.com/in/pabitra-das-adhikari-22067929b" target="_blank">💼</a>
-        <a href="https://github.com/bapun-coder" target="_blank">🐙</a>
-        <a href="mailto:pabitrad162@gmail.com">✉️</a>
+<!-- HERO -->
+<section class="container">
+    <div class="hero-left"><img src="myphoto.jpg" alt=""></div>
+    <div class="hero-right">
+        <div class="hello">HEY! I AM</div>
+        <h1 class="name">Pabitra Das Adhikari</h1>
+        <div class="role" id="typing-text"></div>
+        <br>
+        <button id="themeBtn" class="resume-btn">Theme</button>
     </div>
+</section>
 
-    <!-- FOOTER -->
-    <div class="footer-wave">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,32 C150,88 350,4 600,32 C850,60 1050,20 1200,40 L1200 120 L0 120 Z"
-                  fill="rgba(255,255,255,0.18)">
-            </path>
-        </svg>
-    </div>
+<!-- SECTIONS -->
+<section id="about" class="hidden-section"><h2>About</h2><p>MCA student …</p></section>
+<section id="skills" class="hidden-section"><h2>Skills</h2><p>C, HTML, MySQL…</p></section>
+<section id="projects" class="hidden-section"><h2>Projects</h2><p>DMA, Salary Slip…</p></section>
 
-    <footer>
-        © 2025 Pabitra Das Adhikari  
-        <p>📞 8338913479 | 📧 pabitrad162@gmail.com</p>
-    </footer>
+<section id="code1" class="hidden-section"><pre><code>#include<stdio.h></code></pre></section>
+<section id="code2" class="hidden-section"><pre><code>#include<stdio.h></code></pre></section>
+<section id="code3" class="hidden-section"><pre><code>#include<stdio.h></code></pre></section>
 
-<!-- JAVASCRIPT -->
+<!-- SOCIAL ICONS -->
+<div class="social-buttons">
+    <a href="https://linkedin.com" target="_blank">💼</a>
+    <a href="https://github.com" target="_blank">🐙</a>
+    <a href="mailto:pabitrad162@gmail.com">✉️</a>
+</div>
+
+<footer>© 2025 Pabitra Das Adhikari</footer>
+
 <script>
-/* Mobile menu toggle */
-const hambBtn = document.getElementById('hambBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-hambBtn.addEventListener('click', () => {
-    mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
-});
+/* ===== Mobile Menu ===== */
+const hamb = document.getElementById("hamb");
+const mob = document.getElementById("mobMenu");
+hamb.onclick = () => {
+    mob.style.display = mob.style.display === "block" ? "none" : "block";
+};
 
-/* Close mobile menu on outside click */
-document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !hambBtn.contains(e.target)) {
-        mobileMenu.style.display = 'none';
-    }
-});
-
-/* Hidden sections (D behaviour) */
-const navLinks = document.querySelectorAll('a[data-target]');
-const hiddenSections = document.querySelectorAll('.hidden-section');
-
-function hideAll() {
-    hiddenSections.forEach(sec => sec.style.display = 'none');
-}
-hideAll();
-
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        hideAll();
-        const sec = document.querySelector(this.dataset.target);
-        sec.style.display = 'block';
-        window.scrollTo({ top: sec.offsetTop - 80, behavior: 'smooth' });
-        mobileMenu.style.display = 'none';
-    });
-});
-
-/* Typing effect */
+/* ===== Typing Effect ===== */
 const words = ["Student","Programmer","C Developer"];
-let i = 0, j = 0, del = false;
-const role = document.getElementById("typing-text");
-
-function type() {
-    const w = words[i];
-    role.innerText = w.substring(0, j);
-
-    if (!del) j++;
-    else j--;
-
-    if (j === w.length) { del = true; setTimeout(type, 900); return; }
-    if (j === 0) { del = false; i = (i + 1) % words.length; }
-
-    setTimeout(type, del ? 70 : 120);
+let i=0,j=0,del=false;
+const t = document.getElementById("typing-text");
+function type(){
+    t.innerText = words[i].substring(0,j);
+    if(!del) j++; else j--;
+    if(j===words[i].length){ del=true; setTimeout(type,800); return; }
+    if(j===0){ del=false; i=(i+1)%words.length; }
+    setTimeout(type,del?60:120);
 }
 type();
 
-/* Theme switcher */
-const themeBtn = document.getElementById("themeBtn");
-const saved = localStorage.getItem("theme") || "auto";
-applyTheme(saved);
-
-themeBtn.addEventListener("click", () => {
-    const current = localStorage.getItem("theme") || "auto";
-    const next = current === "auto" ? "dark" : current === "dark" ? "light" : "auto";
-    localStorage.setItem("theme", next);
-    applyTheme(next);
+/* ===== Section Show/Hide (D) ===== */
+document.querySelectorAll("[data-target]").forEach(btn=>{
+    btn.onclick = e=>{
+        e.preventDefault();
+        document.querySelectorAll(".hidden-section").forEach(s=>s.style.display="none");
+        const target = document.querySelector(btn.dataset.target);
+        target.style.display="block";
+        window.scrollTo({top:target.offsetTop-70,behavior:"smooth"});
+        mob.style.display="none";
+    };
 });
 
-function applyTheme(mode) {
-    if (mode === "dark") document.body.classList.add("dark");
-    else if (mode === "light") document.body.classList.remove("dark");
-    else { 
-        const prefers = matchMedia('(prefers-color-scheme: dark)').matches;
-        prefers ? document.body.classList.add("dark") : document.body.classList.remove("dark");
-    }
-    themeBtn.innerText = "Theme: " + mode;
-}
+/* ===== THEME SWITCH (LIGHT / DARK GAMER RED) ===== */
+const themeBtn = document.getElementById("themeBtn");
+themeBtn.onclick = ()=>{
+    document.body.classList.toggle("dark");
+};
 </script>
 
 </body>
