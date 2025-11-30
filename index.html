@@ -9,15 +9,29 @@
 
 <body>
 
-<!-- ================= HERO SECTION ================= -->
-<section class="hero">
+<!-- ============== PREMIUM NAVBAR ============== -->
+<div class="navbar">
+    <div class="logo name">Pabitra</div>
 
-    <!-- LEFT SIDE -->
-    <div class="hero-left">
-        <img src="myphoto.jpg" alt="Pabitra Photo" class="hero-img">
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#code1">C Code 1</a>
+        <a href="#code2">C Code 2</a>
+        <a href="#code3">C Code 3</a>
     </div>
 
-    <!-- RIGHT SIDE -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
+</div>
+
+<!-- ============== HERO SECTION ============== -->
+<section class="hero">
+
+    <div class="hero-left">
+        <img src="myphoto.jpg" class="hero-img">
+    </div>
+
     <div class="hero-right">
         <h3 class="hello">HEY! I AM</h3>
         <h1 class="name">Pabitra Das Adhikari</h1>
@@ -28,130 +42,63 @@
 
         <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
     </div>
-
-    <!-- THREE DOT MENU -->
-    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
-
-    <!-- DROPDOWN MENU -->
-    <div id="dropdownMenu" class="dropdown">
-        <p class="menu-title">Navigation</p>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#code1">C Program 1</a>
-        <a href="#code2">C Program 2</a>
-        <a href="#code3">C Program 3</a>
-        <a href="resume.pdf" download>Download Resume</a>
-    </div>
-
 </section>
 
-<!-- ================= HIDDEN SECTIONS ================= -->
+<!-- ============== HIDDEN SECTIONS ============== -->
+<section id="about" class="hidden-section"><h2>About</h2><p>I am a programmer...</p></section>
+<section id="skills" class="hidden-section"><h2>Skills</h2></section>
+<section id="projects" class="hidden-section"><h2>Projects</h2></section>
+<section id="code1" class="hidden-section"><h2>C Program 1</h2></section>
+<section id="code2" class="hidden-section"><h2>C Program 2</h2></section>
+section id="code3" class="hidden-section"><h2>C Program 3</h2></section>
 
-<section id="about" class="hidden-section">
-    <h2>About Me</h2>
-    <p>I am a passionate C programmer and MCA student.</p>
-</section>
+<!-- ============== FLOATING SOCIAL BUTTONS ============== -->
+<div class="social-buttons">
+    <a href="https://linkedin.com" target="_blank">in</a>
+    <a href="https://github.com" target="_blank">🐙</a>
+    <a href="mailto:pabitrad162@gmail.com">📧</a>
+</div>
 
-<section id="skills" class="hidden-section">
-    <h2>My Skills</h2>
-    <ul>
-        <li>C Language</li>
-        <li>HTML & CSS</li>
-        <li>MYSQL & ORACLE</li>
-        <li>MS Excel, Word, PowerPoint</li>
-        <li>Quick Learning & Adaptability</li>
-        <li>Teamwork & Responsibility</li>
-    </ul>
-</section>
-
-<section id="projects" class="hidden-section">
-    <h2>Projects</h2>
-    <p>Dynamic Memory Allocation</p>
-    <p>Salary Slip Generator</p>
-    <p>File Handling Programs</p>
-</section>
-
-<section id="code1" class="hidden-section">
-    <h2>C Program 1</h2>
-    <pre><code>#include <stdio.h>
-int main(){ printf("Program 1"); }</code></pre>
-</section>
-
-<section id="code2" class="hidden-section">
-    <h2>C Program 2</h2>
-    <pre><code>#include <stdio.h>
-int main(){ printf("Program 2"); }</code></pre>
-</section>
-
-<section id="code3" class="hidden-section">
-    <h2>C Program 3</h2>
-    <pre><code>#include <stdio.h>
-int main(){ printf("Program 3"); }</code></pre>
-</section>
+<!-- ============== ANIMATED WAVE FOOTER ============== -->
 <footer>
     <p>© 2025 Pabitra Das Adhikari</p>
-
-    <p>
-        📞 8338913479 &nbsp; | &nbsp;
-        📧 pabitrad162@gmail.com &nbsp; | &nbsp;
-        🔗 <a href="https://linkedin.com/in/pabitra-das-adhikari-22067929b" target="_blank">LinkedIn</a> &nbsp; | &nbsp;
-        💻 <a href="https://github.com/bapun-coder" target="_blank">GitHub</a>
-    </p>
+    <p>📞 8338913479 | 📧 pabitrad162@gmail.com | 🔗 LinkedIn | 💻 GitHub</p>
 </footer>
 
-<!-- ================= JAVASCRIPT ================= -->
 <script>
-// Dropdown toggle
-function toggleMenu() {
-    const menu = document.getElementById("dropdownMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
-// Close menu when clicking outside
-document.addEventListener("click", function(event) {
-    const menu = document.getElementById("dropdownMenu");
-    const button = document.querySelector(".menu-btn");
-    if (!button.contains(event.target) && !menu.contains(event.target)) {
-        menu.style.display = "none";
-    }
-});
-
-/* ================= TYPING EFFECT ================= */
+/* Typing Animation */
 const words = ["Student", "Programmer", "C Developer"];
-let i = 0, j = 0;
-let isDeleting = false;
+let i = 0, j = 0, isDeleting = false;
 
 function typeEffect() {
-    let currentWord = words[i];
+    let w = words[i];
+    document.getElementById("typing-text").textContent = w.substring(0, j);
 
-    if (!isDeleting) {
-        document.getElementById("typing-text").innerHTML =
-            currentWord.substring(0, j + 1);
-        j++;
+    if (!isDeleting) j++;
+    else j--;
 
-        if (j === currentWord.length) {
-            isDeleting = true;
-            setTimeout(typeEffect, 1000);
-            return;
-        }
-    } 
-    else {
-        document.getElementById("typing-text").innerHTML =
-            currentWord.substring(0, j - 1);
-        j--;
+    if (j === w.length) { isDeleting = true; setTimeout(typeEffect, 900); return; }
+    if (j === 0) { isDeleting = false; i = (i + 1) % words.length; }
 
-        if (j === 0) {
-            isDeleting = false;
-            i = (i + 1) % words.length;
-        }
-    }
-    setTimeout(typeEffect, isDeleting ? 80 : 130);
+    setTimeout(typeEffect, isDeleting ? 80 : 125);
 }
 typeEffect();
+
+/* Smooth Scroll */
+document.querySelectorAll(".navbar a").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const sec = document.querySelector(this.getAttribute("href"));
+        sec.style.display = "block";
+        window.scrollTo({ top: sec.offsetTop - 60, behavior: "smooth" });
+    });
+});
+
+/* Dark Mode */
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
 </script>
 
 </body>
 </html>
-
-
