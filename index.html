@@ -9,75 +9,103 @@
 
 <body>
 
-<!-- THREE DOT MENU -->
-<div class="menu-btn" onclick="toggleMenu()">⋮</div>
-
-<div id="dropdownMenu" class="dropdown">
-    <p class="menu-title">Menu</p>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#code1">C Program 1</a>
-    <a href="#code2">C Program 2</a>
-    <a href="#code3">C Program 3</a>
-    <a href="resume.pdf" download>Download Resume</a>
-</div>
-
-<!-- =============================== -->
-<!--            HERO AREA            -->
-<!-- =============================== -->
-
+<!-- ================= HERO SECTION (Split Screen) ================= -->
 <section class="hero">
 
+    <!-- LEFT SIDE PHOTO -->
     <div class="hero-left">
-        <img src="myphoto.jpg" alt="Pabitra Photo">
+        <img src="myphoto.jpg" alt="Pabitra Photo" class="hero-img">
     </div>
 
+    <!-- RIGHT SIDE TEXT -->
     <div class="hero-right">
-        <p class="hello">HEY! I AM</p>
-        <h1>Pabitra Das Adhikari</h1>
-        <h2>I’m a <span class="typing">Developer</span></h2>
+        <h3 class="hello">HEY! I AM</h3>
+        <h1 class="name">Pabitra Das Adhikari</h1>
+        <h2 class="role">Student | Programmer | C Developer</h2>
+
+        <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
+    </div>
+
+    <!-- THREE DOT MENU -->
+    <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+
+    <div id="dropdownMenu" class="dropdown">
+        <p class="menu-title">Navigation</p>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#code1">C Program 1</a>
+        <a href="#code2">C Program 2</a>
+        <a href="#code3">C Program 3</a>
+        <a href="resume.pdf" download>Download Resume</a>
     </div>
 
 </section>
 
+<!-- ================= HIDDEN SECTIONS (ONLY SHOW FROM MENU) ================= -->
 
-<!-- Hidden sections - appear when clicked -->
-<section id="about" class="hidden">
+<section id="about" class="hidden-section">
     <h2>About Me</h2>
     <p>I am a passionate C programmer and MCA student.</p>
 </section>
 
-<section id="skills" class="hidden">
+<section id="skills" class="hidden-section">
     <h2>My Skills</h2>
     <ul>
         <li>C Language</li>
         <li>HTML & CSS</li>
-        <li>MYSQL AND ORACAL</li>
-        <li>Microsoft Excel & Word</li>
+        <li>MYSQL & ORACLE</li>
+        <li>MS Excel, Word, PowerPoint</li>
+        <li>Quick Learning & Adaptability</li>
+        <li>Teamwork & Responsibility</li>
     </ul>
 </section>
 
-<section id="projects" class="hidden">
+<section id="projects" class="hidden-section">
     <h2>Projects</h2>
+    <p>Dynamic Memory Allocation</p>
+    <p>Salary Slip Generator</p>
+    <p>File Handling Programs</p>
 </section>
 
-<section id="code1" class="hidden"><h2>C Program 1</h2></section>
-<section id="code2" class="hidden"><h2>C Program 2</h2></section>
-<section id="code3" class="hidden"><h2>C Program 3</h2></section>
+<section id="code1" class="hidden-section">
+    <h2>C Program 1</h2>
+    <pre><code>
+#include <stdio.h>
+int main(){ printf("Program 1"); }
+    </code></pre>
+</section>
 
+<section id="code2" class="hidden-section">
+    <h2>C Program 2</h2>
+    <pre><code>
+#include <stdio.h>
+int main(){ printf("Program 2"); }
+    </code></pre>
+</section>
+
+<section id="code3" class="hidden-section">
+    <h2>C Program 3</h2>
+    <pre><code>
+#include <stdio.h>
+int main(){ printf("Program 3"); }
+    </code></pre>
+</section>
+
+<!-- JS -->
 <script>
 function toggleMenu() {
     const menu = document.getElementById("dropdownMenu");
     menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
 
-document.querySelectorAll(".dropdown a").forEach(link => {
-    link.addEventListener("click", () => {
-        document.querySelectorAll("section").forEach(sec => sec.classList.add("hidden"));
-        const target = document.querySelector(link.getAttribute("href"));
-        if (target) target.classList.remove("hidden");
-    });
+document.addEventListener("click", function (event) {
+    const menu = document.getElementById("dropdownMenu");
+    const button = document.querySelector(".menu-btn");
+
+    if (!button.contains(event.target) && !menu.contains(event.target)) {
+        menu.style.display = "none";
+    }
 });
 </script>
 
