@@ -18,6 +18,20 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Animation 2: Slide-in Photo Panel */
+    animation: photoSlide 1.2s ease-out;
+}
+
+@keyframes photoSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .hero-img {
@@ -25,6 +39,15 @@ body, html {
     max-width: 350px;
     border-radius: 20px;
     box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+
+    /* Animation 3: Floating Image */
+    animation: floatPic 3s ease-in-out infinite;
+}
+
+@keyframes floatPic {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
 /* RIGHT PANEL */
@@ -35,7 +58,20 @@ body, html {
     flex-direction: column;
     justify-content: center;
     padding-left: 40px;
-    animation: fadeIn 1.5s ease-in-out;
+
+    /* Animation 1: Text Fade + Slide */
+    animation: fadeSlide 1.2s ease-out;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hello {
@@ -57,6 +93,17 @@ body, html {
     color: #555;
 }
 
+/* Typing text cursor */
+#typing-text {
+    border-right: 3px solid #0078ff;
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
 /* BUTTON */
 .resume-btn {
     background: #0078ff;
@@ -66,15 +113,15 @@ body, html {
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-}
-.resume-btn:hover {
-    background: #005fcc;
+    transition: 0.3s;
+    box-shadow: 0 0 0px transparent;
 }
 
-/* ANIMATION */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* Animation 4: Glowing Hover Button */
+.resume-btn:hover {
+    background: #005fcc;
+    box-shadow: 0 0 12px #0078ff;
+    transform: scale(1.05);
 }
 
 /* ================= THREE DOT MENU ================= */
@@ -97,6 +144,20 @@ body, html {
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     display: none;
+
+    /* Animation 6: Smooth Dropdown */
+    animation: dropMenu 0.3s ease-out;
+}
+
+@keyframes dropMenu {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .dropdown a {
@@ -124,18 +185,23 @@ body, html {
     margin: 15px;
     background: #fff;
     border-radius: 10px;
-}
-/* Typing text cursor */
-#typing-text {
-    border-right: 3px solid #0078ff;
-    padding-right: 5px;
-    animation: blink 0.7s infinite;
+
+    /* Animation 5: Fade-in when opened */
+    animation: fadeInSection 0.8s ease-out;
 }
 
-@keyframes blink {
-    50% { border-color: transparent; }
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-/* MOBILE FIX */
+
+/* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -162,4 +228,3 @@ body, html {
         top: 10px;
     }
 }
-
