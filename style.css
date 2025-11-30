@@ -125,3 +125,41 @@ body, html {
     background: #fff;
     border-radius: 10px;
 }
+/* Typing text cursor */
+#typing-text {
+    border-right: 3px solid #0078ff;
+    padding-right: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hero-left, .hero-right {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .hero-img {
+        width: 60%;
+        max-width: 250px;
+    }
+
+    .hero-right {
+        padding-left: 0;
+    }
+
+    .menu-btn {
+        right: 10px;
+        top: 10px;
+    }
+}
+
