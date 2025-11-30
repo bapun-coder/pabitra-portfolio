@@ -1,17 +1,19 @@
 /* RESET */
-body, html {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
 }
 
-/* ================= PREMIUM BACKGROUND ================= */
+/* ================= BACKGROUND ================= */
 body {
+    min-height: 100vh;
     background: linear-gradient(-45deg, #c7d6ff, #f0eaff, #dff8ff, #e8efff);
     background-size: 400% 400%;
     animation: bgAnimate 10s ease infinite;
+    transition: background 0.5s, color 0.5s;
 }
 
 @keyframes bgAnimate {
@@ -20,116 +22,112 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* ================= HERO SPLIT ================= */
+/* ================= PREMIUM NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 4px 25px rgba(0, 200, 255, 0.3);
+    z-index: 2000;
+    animation: navGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes navGlow {
+    0% { box-shadow: 0 4px 25px rgba(0,200,255,0.3); }
+    100% { box-shadow: 0 4px 40px rgba(0,200,255,0.8); }
+}
+
+.navbar a {
+    margin: 0 18px;
+    color: #0078ff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #00eaff;
+    text-shadow: 0 0 10px #00eaff;
+}
+
+/* Theme Switcher Button */
+.theme-toggle {
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: #00aaff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #00eaff;
+}
+
+/* ================= HERO SECTION ================= */
 .hero {
     display: flex;
     height: 100vh;
+    padding-top: 80px; 
 }
 
-/* LEFT SIDE */
-.hero-left {
+.hero-left, .hero-right {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: fadeLeft 1.2s ease-out;
 }
 
-@keyframes fadeLeft {
-    from { opacity: 0; transform: translateX(-80px); }
-    to   { opacity: 1; transform: translateX(0); }
-}
-
-/* IMAGE WITH NEON */
 .hero-img {
     width: 70%;
     max-width: 350px;
     border-radius: 20px;
-    animation: floatPic 3s infinite ease-in-out,
-               neonPulse 2s infinite alternate;
+    animation: floatPic 3s infinite ease-in-out, neonPulse 2s infinite alternate;
 }
 
 @keyframes floatPic {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-10px); }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
     100% { transform: translateY(0); }
 }
 
 @keyframes neonPulse {
-    0% { box-shadow: 0 0 18px #0078ff; }
-    100% { box-shadow: 0 0 35px #00eaff; }
+    0% { box-shadow: 0 0 15px #0078ff; }
+    100% { box-shadow: 0 0 30px #00eaff; }
 }
 
-/* RIGHT SIDE */
-.hero-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 40px;
-    animation: fadeUp 1.2s ease-out;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.hello {
-    color: #0078ff;
-    letter-spacing: 3px;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-/* Gradient text */
 .name {
     font-size: 42px;
     font-weight: 900;
     background: linear-gradient(90deg,#0078ff,#00eaff,#005cff);
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
     animation: glowText 3s infinite alternate;
 }
 
 @keyframes glowText {
-    0% { filter: drop-shadow(0px 0px 4px #00aaff); }
-    100% { filter: drop-shadow(0px 0px 12px #0078ff); }
+    0% { filter: drop-shadow(0 0 3px #00eaff); }
+    100% { filter: drop-shadow(0 0 10px #0078ff); }
 }
 
-.role {
-    font-size: 20px;
-    color: #444;
-    margin: 10px 0 20px;
-}
-
-/* Typing cursor */
-#typing-text {
-    border-right: 3px solid #0078ff;
-    padding-right: 5px;
-    animation: blink 0.7s infinite, typingColor 5s infinite alternate;
-}
-
-@keyframes blink {
-    50% { border-color: transparent; }
-}
-
-@keyframes typingColor {
-    0% { color: #0078ff; }
-    50% { color: #00eaff; }
-    100% { color: #0066ff; }
-}
-
-/* BUTTON */
 .resume-btn {
     display: inline-block;
     background: linear-gradient(90deg,#0078ff,#00eaff);
-    color: white;
     padding: 12px 24px;
+    color: white;
+    font-weight: bold;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: bold;
     transition: 0.3s;
     animation: pulseBtn 2s infinite;
 }
@@ -142,109 +140,98 @@ body {
 
 .resume-btn:hover {
     transform: scale(1.12);
-    box-shadow: 0 0 18px #00eaff;
+    box-shadow: 0 0 20px #00eaff;
 }
 
-/* ================= THREE DOT MENU ================= */
-.menu-btn {
-    position: absolute;
-    top: 20px;
+/* ================= FLOATING SOCIAL BUTTONS ================= */
+.social-buttons {
+    position: fixed;
     right: 25px;
-    font-size: 28px;
-    cursor: pointer;
-    animation: popIn 0.5s ease-out;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 3000;
 }
 
-@keyframes popIn {
-    from { transform: scale(0); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-}
-
-/* DROPDOWN */
-.dropdown {
-    position: absolute;
-    top: 60px;
-    right: 25px;
-    width: 200px;
-    background: rgba(255,255,255,0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 14px;
-    padding: 12px;
-    display: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    animation: dropSmooth 0.4s ease-out;
-}
-
-@keyframes dropSmooth {
-    from { opacity: 0; transform: translateY(-10px) scale(0.9); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.dropdown a {
-    display: block;
-    padding: 10px;
-    color: #0078ff;
+.social-buttons a {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
+    color: #0078ff;
+    box-shadow: 0 0 15px #00aaff;
+    transition: 0.3s;
 }
-.dropdown a:hover {
-    background: #eaf4ff;
+
+.social-buttons a:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 25px #00eaff;
 }
 
 /* ================= HIDDEN SECTIONS ================= */
 .hidden-section {
     display: none;
-    padding: 20px;
-    background: rgba(255,255,255,0.85);
+    padding: 25px;
     margin: 15px;
+    background: rgba(255,255,255,0.7);
     border-radius: 12px;
     animation: reveal 0.8s ease-out;
 }
 
 @keyframes reveal {
     from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .hero { flex-direction: column; height: auto; }
-
-    .hero-left, .hero-right {
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .hero-img {
-        width: 60%;
-        max-width: 250px;
-    }
-
-    .menu-btn {
-        right: 10px;
-        top: 10px;
-    }
-
-    .hero-right { padding-left: 0; }
-}
-/* FOOTER */
+/* ================= ANIMATED WAVE FOOTER ================= */
 footer {
     text-align: center;
-    padding: 20px;
-    color: black;
-    background: transparent;
-    margin-top: 20px;
+    padding: 30px 10px;
+    color: white;
+    position: relative;
+    margin-top: 50px;
+    overflow: hidden;
 }
 
-footer a {
-    color: #00aaff;
-    text-decoration: none;
+footer::before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 200%;
+    height: 150px;
+    background: url("wave.svg");
+    background-size: cover;
+    animation: wave 6s linear infinite;
 }
 
+@keyframes wave {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
 
+footer p {
+    position: relative;
+    z-index: 10;
+}
 
+/* ================= DARK MODE ================= */
+body.dark {
+    background: #0b0f19;
+    color: white;
+}
 
+body.dark .navbar {
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 4px 30px #0ff;
+}
 
-
+body.dark footer {
+    color: white;
+}
